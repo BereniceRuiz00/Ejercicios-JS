@@ -99,3 +99,22 @@ typeof (e);
 String(x);
 
 
+// 
+var a = 1;
+
+let a = 1;
+
+// Constante
+// Variable con dato que jamas va a cambiar
+// Un solo valor, no deben cambiat y no se puede cambiar
+const a = 1;
+
+
+// Arreglos
+
+const carros = ["BMW","Volvo", "Mercedes"];
+const carritoCompras = ["Leche", "Tortillas", "Mango", "Maruchan", "Aguacate", "Sandia", "Queso", "Sabritas", "Oreo", "Piña", "Chachitos", "Pollo", "Jamon", "Harina", "Mantequilla", "Chocolate", "Wafflera Plaza Sesamo", "Nutella", "Fresas", "Servilletas", "Xbox Series X"];
+
+// Ubicacion empieza desde 0
+carros [2];
+// "Mercedes"
