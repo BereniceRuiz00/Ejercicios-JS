@@ -27,6 +27,8 @@ var a1;
 var a_Nombre;
 var a$Direccion;
 
+// Normalizar datos que se van a ingresar 
+ var tel = "+52 448 234 1212";
 
 // Declaración de variables
 
@@ -64,4 +66,36 @@ var precioProducto;
 var precioSubtotal;
 var precioTotal;
 var metodoDePAgo;
+
+/*Nueva Funcion 
+typeOF();
+Nos indica el tipo de dato al que pertenece nuestra variable*/
+var a =2;
+typeof (a);
+// s'number'
+var b = "2";
+typeof (b);
+// 'string'
+var c = true;
+typeof(c);
+// boolean;
+var d = null;
+typeof (d);
+// object < Object de JavaScript
+
+// isNaN() es una funcion que nos permite verificar  si un dato es o no un numero
+
+// NaN es tal cual un tipo de dato en JavaScript
+isNaN (NaN);
+// true
+
+var e = NaN;
+isNaN(e);
+// true
+typeof (e);
+// number
+
+// Convertir number to string
+String(x);
+
 
