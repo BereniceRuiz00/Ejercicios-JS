@@ -118,3 +118,4 @@ const carritoCompras = ["Leche", "Tortillas", "Mango", "Maruchan", "Aguacate", "
 // Ubicacion empieza desde 0
 carros [2];
 // "Mercedes"
+

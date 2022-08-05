@@ -118,3 +118,17 @@ function areaTriangulo(b, a) {
 }
 
 console.log( areaTriangulo(8, 4));
+
+// -------------------------------------------
+// Ejercicio
+
+// Objeto: strings o keys se relacionan en un valor de un arreglo
+
+const Conejo = {
+
+    "nombre": "Griselo",
+    "edad": 27,
+    "color": "Gris",
+    "peso": 500
+};
+
