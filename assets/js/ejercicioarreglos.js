@@ -23,3 +23,5 @@ console.log("Roberto se lesiona y sale de la carrera: ",primeravuelta);
 primeravuelta.splice((primeravuelta.indexOf("Andrea")),1);
 primeravuelta.push("Andrea","Jose");
 console.log("Andrea baja una posicion: ",primeravuelta);
+
+

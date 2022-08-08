@@ -219,9 +219,178 @@ console.log("Me gustaria conocer la posicion de los chetos del arreglo dulces", 
 
 console.log("la ultima posicion de las galletas es: ", dulces.lastIndexOf("galletas"));
 
-// toString
+// toString(): Nos permite convertir el array en una cadena de texto
 console.log(dulces.toString());
-// valueOf
+
+// valueOf (): Nos permite devolver el valor de nuestro arreglo
 console.log(ensalada.valueOf());
-// includes
+
+// includes(): Nos permite saber si un eleemnto existe dentro de un arreglo
 console.log(dulces.includes("papitas"));
+
+
+/*
+    Métodos repetidores 
+*/
+
+// filter(): Recorre el array y devuelve una nueva con los elementos que cumplan la condicion. (Es como un bucle).
+
+var numeros = [1,2,3,4,5,6,7,8,9,10];
+console.log("Numeros del 1 al 10", numeros);
+
+// Filtraremos los datos del arreglo
+var numeros1al5 = numeros.filter(numero => numero <5);
+console.log("Estos son los numeros que cumplen la condicion al ser menores que 5", numeros1al5);
+
+var numeros6al9 = numeros.filter(numero => numero>=6&&numero <10);
+console.log("Estos son los numeros que cumplen la condicion al ser menores que 9", numeros6al9);
+
+// map(): Recorrer el arreglo, modificar los elementos presentes en el y retornar estos valores modificados en uno nuevo con la misma longitud original.
+
+var map = numeros.map(numeros => numeros*3);
+
+console.log("Esta es la tabla del 3", map);
+
+
+//Ejercicio Improvisado tablas del 1 al 10
+
+var arregloBase = [1,2,3,4,5,6,7,8,9,10];
+var tabla2= arregloBase.map(arregloBase => arregloBase *2 );
+console.log("Esta es la tabla del 2", tabla2);
+
+// Esta es una tabla que toma una variable global(funciona, pero no es lo que debemos hacer)
+var tabla3 = arregloBase.map(numeros => numeros*3);
+console.log("Esta es la tabla del 3",tabla3);
+
+/*
+
+forEach(): Este metodo nos permite llamar a una funcion "callback" especifica una vez por cada elemento sobre el que se itrea del array. Al igual que otros iteradores como map o el filter, este metodo recibe algunos parametros:
+
+    - Elemento actual: elemento del arreglo que se va a evaluar o sobre el que se hace la iteracion
+    - Indice: La posicion que tiene el elemento dentro del arreglo
+    - El arreglo objetivo: el arreglo por el cual se esta haciendo esta iteracion.
+
+ESTE METODO NO CAMBIA EL ARREGLO ORIGINAL, DEVUELVE UNO NUEVO CON LOS ELEMENTOS MODIFICADOS
+
+*/
+
+//Ejemplo para remover el primer numero impar de un arreglo
+
+let listaNumeros = [3, 6, 8, 10, 12,];
+let impar = 3;
+
+listaNumeros.forEach(function(numero){ //por cada elemento del arreglo, ejecuta la funcion
+    if (numero === impar){
+        listaNumeros.shift();
+    }
+});
+
+console.log("Estos son los elementos del array que no son impares", listaNumeros);
+
+///////////////////////////////////////////////////////////////////
+
+/* 
+    
+    Bucles o Loops
+
+En JS los bucles son utilizados para realizar tareas con base a una  condición , además  de que 
+el bucle continuara ejecutandose hasta que la condicion devuelva un false
+
+Normalmente tenemos 3 ciclos:
+
+    - While (mientras)
+    - Do while (hacer mientras)
+    - For (para)
+
+Tenemos otras sentencias más especificas:
+
+    - for in: sirve para recorrer un arreglo y por cada uno de los elementos de este arreglo obtenemos LA POSICION.
+
+    - for of: sirve para recorrer un arreglo, y por cada uno de los elementos de este arreglo, obtenemos SU VALOR.
+
+*/
+
+/*
+
+Sentencia WHILE (mientras)
+
+Esta sentencia nos va a permitir recorrer un bloque de codigo
+SIEMPRE que se cumpla una condicion especifica, donde el resultado debe ser true
+
+La estructura de While es: 
+
+palabraReservada while (condicion que tiene que ser true){
+    //Codigo a ejecutar
+}
+
+*/
+
+let numeroParaSumar = 0;
+while(numeroParaSumar <18){
+console.log("El numeor es menor a 10",numeroParaSumar);
+numeroParaSumar ++;
+}
+
+// LA sentencia while se ejecuta mientras se sigan obteniendo resultados positivos(true), y hasta que el resultado sea false, se para.
+
+// Práctica grupal: Escribir un programa que pidas al usuario un numero entero positivo y muestre por pantalla todos los numero impares desde 1 hasta ese numero
+
+let numini =1;
+let valorlimite = prompt("Hola, por favor ingresa un numero entero positivo que sea el limite");
+
+while(numini<=valorlimite){
+    if(numini%2 != 0){
+console.log("Impar: ",numini);
+}
+numini++;
+}
+
+/* 
+
+Do while (hacer mientras)
+
+El bucle do while nos sirve para ejecutar una sentencia especificada hasta que la condicion se evalua despues de ejecutar la sentencia, dando como resultado que la sentencia especificada se ejecuta al menos una vez.
+
+En pocas palabras, con el qhile preguntamos una vez, evaluamos la condicion y ejecutamos la instruccion. con el do while, ejecutamos la instruccion al menos una vez, y luego preguntamos la condicion.
+
+Estructura basica: 
+
+palabraresrvada do {
+    // Codigo a ejecutar
+}
+while(condicion);
+
+*/
+
+// Ejemplo
+
+let numerito = 0; 
+do{
+    console.log("El numero es: ",numerito);
+    numerito ++;
+}while(numerito<=10);
+
+
+/*
+    for (para)
+
+Este ciclo sirve para iterar 
+- El valor inicial de la variable que vamos a iterar (i=0)
+- la condicion que tiene que cumplirse para que el bucle se siga ejecutando (i<5)
+- La operacion que se realiza una vez que termina el bucle (i++)
+
+Estructura basica del for: 
+
+for ( valor inicial, condicion, operacion){
+}
+
+*/
+
+// Ejemplo
+
+console.log("For");
+for(let i = 0; i<10; i++){
+    console.log(i);
+}
+
+
