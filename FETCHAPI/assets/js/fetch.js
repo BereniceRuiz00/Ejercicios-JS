@@ -22,36 +22,35 @@
 
 */
 // Ejemplo de JavaScript Sincrono
-console.log ("Inicio Sincrono"); //1
-function dosSincrono (){
-    console.log("Dos");
+console.log("Inicio Sincrono"); //1
+function dosSincrono() {
+  console.log("Dos");
 }
-function unoSincrono(){ 
-    console.log("Uno");//2
-    dosSincrono(); //3
-    console.log("Tres"); //4
+function unoSincrono() {
+  console.log("Uno"); //2
+  dosSincrono(); //3
+  console.log("Tres"); //4
 }
 unoSincrono();
-console.log("Fin de Sincrono");//5
+console.log("Fin de Sincrono"); //5
 
 //Cual es la salida de este codigo 1,2,3
-
 
 // Ejemplo de JS asincrono
 
 console.log("Inicio asincrono");
-function dos(){
-    setTimeout(function(){
-        console.log("Dos");
-    },200);
+function dos() {
+  setTimeout(function () {
+    console.log("Dos");
+  }, 200);
 }
 
-function uno(){
-    setTimeout(function(){
-        console.log("Uno");
-    },0);
-    dos();
-    console.log("tres");
+function uno() {
+  setTimeout(function () {
+    console.log("Uno");
+  }, 0);
+  dos();
+  console.log("tres");
 }
 
 uno();
@@ -104,40 +103,36 @@ Nuestras promesas tienen algunos metodos:
     
 */
 
-
-
 // Ejemplo d epromesa para saber el nombre
 
 let nombre = "BRE";
 
-const promesaNombre = new Promise((resolve,reject) => {
-    if(nombre!=="BERE") reject("Error!!,el nombre no es BERE");
-    resolve(nombre);
+const promesaNombre = new Promise((resolve, reject) => {
+  if (nombre !== "BERE") reject("Error!!,el nombre no es BERE");
+  resolve(nombre);
 });
 console.log(promesaNombre);
 
-
 // Promesa de AMOR
-var promesaDeAmor = new Promise((resolve,reject) => {
-   setTimeout(function(){
+var promesaDeAmor = new Promise((resolve, reject) => {
+  setTimeout(function () {
     resolve("Si si quiero salir contigo");
-   },5000);
+  }, 5000);
 });
-promesaDeAmor.then(function(valor){
-    console.log(valor);
+promesaDeAmor.then(function (valor) {
+  console.log(valor);
 });
-console.log(promesaDeAmor)
+console.log(promesaDeAmor);
 
 // Promesa TORTA
 
 let desicion = "Si";
 
-const promesaTortas = new Promise((resolve,reject) => {
-    if(desicion!=="Si") reject("No hay tortas");
-    resolve(desicion);
+const promesaTortas = new Promise((resolve, reject) => {
+  if (desicion !== "Si") reject("No hay tortas");
+  resolve(desicion);
 });
 console.log(promesaTortas);
-
 
 /**
     Fetch API
@@ -148,12 +143,181 @@ Es el nombre de una nueva API (nativa) para JS con la cual podemos realizar peti
 //const solicitud = fetch('la url que vamos a consultar')
 //Guardo en una constante llamada solicitud, la consulta que hago a una pagina externa
 
-
-
 fetch("https://pokeapi.co/api/v2/pokemon/ditto") //realizamos la peticion a la URL de la API Pokemon.
-    .then(datos => {//cuando te conectes al servidor ejecutamos la siguiente funcion
-        return datos.json();//traeme todos los pokemon, y como se que los  traes en texto, yo los convierto en formato JSON
-    })
-    .then(info => {//cuando la promesa se resuelve, entoncesejecutamos esta funcion. Usamos el metodo then para obtener la respuesta de la promesa y guardarla en una variable llamada info. Gracias a esta variable puedo almacenar al info de mi pokemon y scar de ahi los datos que necesite
-        console.log("El nombre de nuestro pokemon es: ",info.name, "y su numero es: ",info.id);
-    });
+  .then((datos) => {
+    //cuando te conectes al servidor ejecutamos la siguiente funcion
+    return datos.json(); //traeme todos los pokemon, y como se que los  traes en texto, yo los convierto en formato JSON
+  })
+  .then((info) => {
+    //cuando la promesa se resuelve, entoncesejecutamos esta funcion. Usamos el metodo then para obtener la respuesta de la promesa y guardarla en una variable llamada info. Gracias a esta variable puedo almacenar al info de mi pokemon y scar de ahi los datos que necesite
+    console.log(
+      "El nombre de nuestro pokemon es: ",
+      info.name,
+      "y su numero es: ",
+      info.id
+    );
+  });
+
+//   Solicitud GETv - fakestore
+
+fetch("https://fakestoreapi.com/products/10")
+  .then((res) => res.json())
+  .then((json) => console.log(json));
+
+// GET especifico
+
+fetch("https://fakestoreapi.com/products/10")
+  .then((datos) => {
+    return datos.json();
+  })
+  .then((info) => {
+    console.log(
+      "El nombre de nuestro producto es: ",
+      info.title,
+      " y su precio es: ",
+      info.price
+    );
+  });
+
+//  Solicitud - POST (enivar infromación)
+
+fetch("https://fakestoreapi.com/products", {
+  method: "POST", //por default es GET, para cambiarla debemos especificar el metodo
+  body: JSON.stringify(
+    //como la info que voy a manejar es un objeto, necesito convertirlo a un texto(string)
+
+    // Cuerpo de la solicitud
+    {
+      title: "Cheetos Flamming Hot",
+      price: 18,
+      description: "Cheetos flamming hot 213g",
+      image: "https://i.pravatar.cc",
+      category: "papitas",
+    }
+  ),
+})
+  .then((res) => res.json())
+  .then((json) => console.log(json));
+
+/* APIS DE ALMACENAMIENTO WEB
+
+
+la API de almacenamiento web define dos mecanismos de almacenamiento que son muy importantes
+
+- almacenamiento local
+- almacenamiento de sesiones
+
+Tanto el almacenamiento local como el de sesiones proporcionan una area privada para sus datos, esto quiere decir que otros sitios web no pueden acceder a esta informacion
+
+
+Algunas caracteristicas que comparten el local y el session storage son:
+
+    - La capacidad (5Mb a diferencia de los 4Kb de las cookies)
+    - La informacion es almacenada en pares clave/valor, por lo que se puede usar como si fueran variables.
+    - El almacenamiento web solo es accesible en el navegador, no se envia al servidor como lo hacen las cookies.
+
+
+ALMACENAMIENTO LOCAL (LocalStorage)
+
+La informacion almacenada con localStorage se guarda indefinidamente hasta que sea eliminada mediante codigo o bien borrada desde el navegador.
+
+El almacenamiento local es similiar a las cookies, pero se borra con menos frecuencia y puede almacenar mas datos. Por lo tanto, se puede utilizar en situaciones similares, tales como: almacenar articulos que un usuario de comercio electronico agrego a un carrito, almacenar historial de uso, etc.
+
+La informacion que almacenamos en localStorege se elimina hasta que se haga explicitamente, ya sea por nostros o por el usuario. Nunca se limpia automaticamente y se comparte en todas las sesiones que acceder al sitio.
+
+
+ALMACENAMIENTO DE SESION (SessionStorage)
+
+
+La informacion que guardamos en sessionStorage solo se guarda durante la sesion del navegador (es decir, se elimina cuando se cierra el navegador). Si tenemos varias ventanas o pestañas abiertas, la informacion se guarda en cada una de ellas, asi que si cerramos una ventana, la informacion se borra de la misma.
+
+
+Como accedemos al almacenamiento?
+
+window.localStorage
+windows.sessionStorage
+
+*/
+
+/*Guardar datos (localStorage.setItem(key,value))
+
+La sintaxis para guardar datos en un localStorage es: localStorage.setItem(key, value);, donde key es la clave (o el identificador) y value es el valor que queremos guardar.
+*/
+
+// localStorage.setItem("Nombre","Felipe");
+// localStorage.setItem("Apellido","Maqueda");
+// localStorage.setItem("Edad", 30);
+// localStorage.setItem("Es programador?", true);
+
+// localStorage.setItem("Nombre1","Gabriel");
+// localStorage.setItem("Apellido1","Campos");
+// localStorage.setItem("Edad1", 28);
+// localStorage.setItem("Es programador?1", false);
+
+// localStorage.setItem("Nombre2","Andrea");
+// localStorage.setItem("Apellido2","Perez");
+// localStorage.setItem("Edad2", 28);
+// localStorage.setItem("Es programador?2", true);
+
+/*
+Recuperar datos (local.Storage.getItem(key, value))
+
+La sintaxis para obtener un dato de localStorage es: localStorage.getItem(key);, donde key es la clave (o el identificador) que queremos recuperar.
+
+// */
+
+// let recuperarNombre = localStorage.getItem("Nombre");
+// console.log(recuperarNombre);
+
+// let recuperarApellido = localStorage.getItem("Apellido");
+// console.log(recuperarApellido);
+
+// let recuperarProgramador = localStorage.getItem("Es programador?1");
+// console.log(recuperarProgramador);
+
+// //Remover datos de LocalStorage (localStorage.removeItem(key))
+
+// localStorage.removeItem("Nombre"); //borrar a Felipe
+// localStorage.removeItem("Apellido"); //borrar a Maqueda
+
+// //Conocer el largo de nuestro almacenamiento (localStorage.length)
+
+// let longitudLocalStorage = localStorage.length;
+// console.log(longitudLocalStorage);
+
+// //Limpiar datos del localStorage (local.Storage.clear())
+// localStorage.clear();
+
+// //Agregar elementos con sessionStorage
+// sessionStorage.setItem("Perrito", "Rocky");
+// sessionStorage.setItem("Gatito", "Bigotes");
+// sessionStorage.setItem("Nutria", "Hernesto");
+// sessionStorage.setItem("Caracol", "Gary");
+// sessionStorage.setItem("Conejtio", "Griselo");
+
+// let longitudSessionStorage = sessionStorage.length;
+// console.log(longitudSessionStorage);
+
+function guarDatos() {
+  localStorage.nombre = document.getElementById("nombre").value; //guardar el valor de nombre en localStorage
+
+  localStorage.password = document.getElementById("password").value; //guardar el valor de password en localStorage
+
+  document.getElementById("datos").innerHTML = "Datos guardados correctamente"; //sobreescribimFos el contenido del parrafo por este nuevo mensaje
+
+  //Revisar el funcionamiento correcto de mi codigo
+  console.log(typeof localStorage.nombre);
+  console.log(typeof localStorage.password);
+}
+
+function recuperarDatos() {
+  //Si en en la llave nombre de mi localStrogane y ademas en la llave password los datos son diferentes de undefined (significa que si tengo datos), voy a mostrar el mensaje con esa informacion
+  if (localStorage.nombre != undefined && localStorage.password != undefined) {
+    document.getElementById("datos").innerHTML =
+      "Nombre: " + localStorage.nombre + " Password: " + localStorage.password;
+    //en caso de que no se cumpla la condicion, muestro un mensaje de alerta
+  } else {
+    document.getElementById("datos").innerHTML =
+      "No has introducido tu nombre y tu password!!!";
+  }
+}
